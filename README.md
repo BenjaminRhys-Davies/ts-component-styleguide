@@ -1,1 +1,1 @@
-# TS-React
+# TS-Component-Styleguide

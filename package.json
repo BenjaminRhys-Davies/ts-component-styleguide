@@ -1,5 +1,5 @@
 {
-  "name": "ts-react",
+  "name": "ts-component-styleguide",
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:BenjaminRhys-Davies/ts-react.git"
+    "url": "git@github.com:BenjaminRhys-Davies/ts-component-styleguide.git"
   },
   "private": true,
   "keywords": [],
@@ -24,31 +24,33 @@
     "@types/jest": "^25.1.1",
     "@types/node": "^13.5.2",
     "@types/react": "^16.9.22",
+    "@types/react-dom": "^16.9.5",
     "@types/styled-components": "^5.0.0",
     "@typescript-eslint/eslint-plugin": "^2.20.0",
     "@typescript-eslint/parser": "^2.19.2",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-typescript": "^7.0.0",
+    "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-eslint-comments": "^3.1.2",
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-jest": "^23.8.0",
     "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-react": "^7.18.3",
     "eslint-plugin-react-hooks": "^2.4.0",
     "eslint-plugin-sonarjs": "^0.5.0",
     "jest": "^25.1.0",
+    "jest-extended": "^0.11.5",
     "nodemon": "^2.0.2",
     "polished": "^3.4.4",
     "prettier": "^1.19.1",
     "react": "^16.12.0",
+    "react-dom": "^16.12.0",
     "styled-components": "^5.0.1",
     "ts-jest": "^25.1.0",
     "ts-node": "^8.6.2",
     "typescript": "^3.8.2"
   },
   "dependencies": {
-
   }
 }

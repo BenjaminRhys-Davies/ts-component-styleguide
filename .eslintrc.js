@@ -79,8 +79,15 @@ module.exports = {
     {
       files: ['*.styled.ts'],
       rules: {
-        // Enable nested ternary declarations for simple logic, styled components
+        // Enable styled components to use nested ternary declarations for simple prop logic
         'no-nested-ternary': 'off',
+      },
+    },
+    {
+      files: ['*.{spec,test}.ts'],
+      rules: {
+        // Ensure that tests can mock imports before import
+        'import/first': 'off',
       },
     },
   ],

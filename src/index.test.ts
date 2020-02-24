@@ -1,7 +1,7 @@
-import { hello } from './index';
+import { Button } from './index';
 
-describe('hello ()', () => {
-  it('returns welcome', () => {
-    expect(hello()).toEqual('Hello world');
+describe('index ()', () => {
+  it('exports a Button', () => {
+    expect(Button).toBeInstanceOf(Function);
   });
 });

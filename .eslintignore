@@ -5,3 +5,4 @@ npm-debug.log
 scripts
 yarn-error.log
 jest.config.js
+jest.setup.js
