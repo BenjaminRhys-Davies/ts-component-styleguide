@@ -8,7 +8,7 @@ jest.mock('polished', () => ({ shade: shadeMock, tint: tintMock }));
 // Under test
 import { color, colorRamp } from './color';
 
-describe('Colors', () => {
+describe('Color', () => {
   type Color = keyof typeof color;
 
   describe('color', () => {

@@ -8,6 +8,7 @@
     "lint": "./node_modules/.bin/eslint --ext .js,.jsx,.ts,.tsx ./src",
     "start": "ts-node ./src/index.ts",
     "start:watch": "nodemon",
+    "storybook": "start-storybook -s ./src/assets",
     "test": "ts-node ./node_modules/jest/bin/jest",
     "test:watch": "npm run test -- --watch",
     "test:coverage": "npm run test -- --coverage"
@@ -21,13 +22,22 @@
   "author": "Benjamin Rhys-Davies <brhysdavies@gmail.com>",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@storybook/addon-info": "^5.3.13",
+    "@storybook/addon-knobs": "^5.3.13",
+    "@storybook/preset-typescript": "^1.2.0",
+    "@storybook/react": "^5.3.13",
+    "@testing-library/jest-dom": "^5.1.1",
+    "@testing-library/react": "^9.4.1",
     "@types/jest": "^25.1.1",
     "@types/node": "^13.5.2",
     "@types/react": "^16.9.22",
     "@types/react-dom": "^16.9.5",
     "@types/styled-components": "^5.0.0",
+    "@types/webpack": "^4.41.6",
     "@typescript-eslint/eslint-plugin": "^2.20.0",
     "@typescript-eslint/parser": "^2.19.2",
+    "babel-loader": "^8.0.6",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-typescript": "^7.0.0",
     "eslint-config-prettier": "^6.10.0",
@@ -45,12 +55,18 @@
     "polished": "^3.4.4",
     "prettier": "^1.19.1",
     "react": "^16.12.0",
+    "react-docgen-typescript-loader": "^3.6.0",
     "react-dom": "^16.12.0",
+    "react-is": "^16.12.0",
     "styled-components": "^5.0.1",
     "ts-jest": "^25.1.0",
+    "ts-loader": "^6.2.1",
     "ts-node": "^8.6.2",
-    "typescript": "^3.8.2"
+    "typescript": "^3.8.2",
+    "url-loader": "^3.0.0",
+    "webpack": "^4.41.6"
   },
   "dependencies": {
+    "framer-motion": "^1.8.4"
   }
 }

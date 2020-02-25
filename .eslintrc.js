@@ -3,6 +3,8 @@ module.exports = {
     '@typescript-eslint',
     'eslint-comments',
     'jest',
+    'prettier',
+    'react',
     'promise',
   ],
   extends: [
@@ -12,8 +14,8 @@ module.exports = {
     'plugin:jest/recommended',
     'plugin:promise/recommended',
     'prettier',
-    'prettier/react',
     'prettier/@typescript-eslint',
+    'prettier/react',
   ],
   env: {
     node: true,
@@ -39,9 +41,9 @@ module.exports = {
     'no-use-before-define': [
       'error',
       {
-        functions: false,
         classes: true,
-        variables: true,
+        functions: false,
+        variables: true
       },
     ],
     // Makes no sense to allow type inferrence for expression parameters, but require typing the response
@@ -84,7 +86,14 @@ module.exports = {
       },
     },
     {
-      files: ['*.{spec,test}.ts'],
+      files: ['*.stories.{ts,tsx}'],
+      rules: {
+        // Enable stories to export a default to register component with storybook
+        'import/no-default-export': 'off',
+      },
+    },
+    {
+      files: ['*.{spec,test}.{ts,tsx}'],
       rules: {
         // Ensure that tests can mock imports before import
         'import/first': 'off',

@@ -1,31 +1,56 @@
 import * as React from 'react';
-import { ButtonStyled, LabelStyled, BusyStyled } from './styled/index.styled';
-import { color } from '../../style/settings/color';
+import { ButtonStyled, LabelStyled, BusyStyled, MotionStyled } from './styled/index.styled';
+import { colorRamp, ColorName } from '../../style/settings/color';
+import { testAttribute, TestProps } from '../test-selector';
 
-interface ButtonProps extends React.HTMLProps<HTMLButtonElement> {
-  readonly isDisabled?: boolean;
+export interface ButtonProps extends TestProps, React.HTMLProps<HTMLButtonElement> {
+  readonly ariaLabel?: string;
+  readonly ariaLabelledBy?: string;
+  readonly colorName?: ColorName;
   readonly isBusy?: boolean;
+  readonly isDisabled?: boolean;
+  readonly isSmall?: boolean;
 }
 
-export const Button = ({ children, isBusy, isDisabled, onClick }: ButtonProps): JSX.Element => (
-  <ButtonStyled
-    disabled={!!isDisabled || !!isBusy}
-    isBusy={!!isBusy}
-    isDisabled={!!isDisabled}
-    onClick={onClick}
-  >
-    <div
-      style={{
-        width: '100%',
-        height: '100%',
-        background: color.electricBlue,
-        position: 'absolute',
-        borderRadius: 24,
-        top: 0,
-        left: 0,
-      }}
-    />
-    <BusyStyled isBusy={!!isBusy} isDisabled={!!isDisabled} />
-    <LabelStyled>{children}</LabelStyled>
-  </ButtonStyled>
-);
+export const Button = (props: ButtonProps): JSX.Element => {
+  const {
+    ariaLabel,
+    ariaLabelledBy,
+    children,
+    isDisabled,
+    onClick,
+    isBusy,
+    isSmall,
+    colorName = 'electricBlue',
+  } = props;
+
+  return (
+    <ButtonStyled
+      {...testAttribute(props)}
+      aria-busy={isBusy}
+      aria-disabled={isDisabled}
+      aria-label={ariaLabel}
+      aria-labelledby={ariaLabelledBy}
+      colorName={colorName}
+      disabled={!!isDisabled || !!isBusy}
+      isBusy={!!isBusy}
+      isDisabled={!!isDisabled}
+      isSmall={isSmall}
+      onClick={onClick}
+      whileHover="hover"
+      whileTap={!isBusy && !isDisabled ? 'tapped' : undefined}
+    >
+      <MotionStyled
+        colorName={colorName}
+        initial="initial"
+        variants={{
+          hover: { backgroundColor: colorRamp[colorName].light },
+          initial: { scale: 1 },
+          tapped: { scale: 0.9 },
+        }}
+      />
+      <BusyStyled isBusy={!!isBusy} />
+      <LabelStyled>{children}</LabelStyled>
+    </ButtonStyled>
+  );
+};

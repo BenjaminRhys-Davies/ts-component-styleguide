@@ -1,25 +1,33 @@
 {
   "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
     "alwaysStrict": true,
     "baseUrl": ".",
     "declaration": true,
+    "emitDecoratorMetadata": true,
     "esModuleInterop": true,
+    "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "lib": [
       "dom",
       "dom.iterable",
       "esnext"
     ],
+    "module": "commonjs",
     "moduleResolution": "node",
     "noImplicitAny": true,
     "noImplicitReturns": true,
+    "noImplicitThis": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "outDir": "build",
     "removeComments": true,
+    "rootDir": "src",
     "skipLibCheck": true,
     "sourceMap": true,
     "strict": true,
+    "strictNullChecks": true,
+    "suppressImplicitAnyIndexErrors": true,
     "target": "es5",
     "jsx": "react",
     "typeRoots": [
@@ -34,6 +42,7 @@
     "build",
     "config",
     "coverage",
-    "node_modules"
+    "node_modules",
+    "scripts"
   ]
 }

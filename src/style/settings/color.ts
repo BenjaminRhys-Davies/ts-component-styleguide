@@ -1,6 +1,6 @@
 import { shade, tint } from 'polished';
 
-const COLOR = {
+export const color = {
   // primary
   richPurple: '#3d0066',
   electricBlue: '#01e1fd',
@@ -28,7 +28,7 @@ const COLOR = {
   charcoal: '#4f4c4d',
 };
 
-export type ColorName = keyof typeof COLOR;
+export type ColorName = keyof typeof color;
 export type ColorNames = {
   [color in ColorName]: string;
 };
@@ -43,7 +43,7 @@ type Ramps = {
   [d in Ramp]: string;
 };
 
-const RAMPS: GenerateColorRamps = {
+const ramps: GenerateColorRamps = {
   lightest: hex => tint(0.8, hex),
   lighter: hex => tint(0.6, hex),
   light: hex => tint(0.4, hex),
@@ -52,10 +52,10 @@ const RAMPS: GenerateColorRamps = {
   darker: hex => shade(0.6, hex),
 };
 
-const generateColorRamp = (name: ColorName): Ramps => Object.keys(RAMPS).reduce(
+const generateColorRamp = (name: ColorName): Ramps => Object.keys(ramps).reduce(
   (acc, ramp) => ({
     ...acc,
-    [ramp]: RAMPS[ramp as Ramp](COLOR[name]),
+    [ramp]: ramps[ramp as Ramp](color[name]),
   }),
   {} as Ramps,
 );
@@ -64,13 +64,10 @@ export type ColorRamps = {
   [color in ColorName]: Ramps;
 };
 
-const COLOR_RAMPS = Object.keys(COLOR).reduce(
+export const colorRamp = Object.keys(color).reduce(
   (acc, name) => ({
     ...acc,
     [name]: generateColorRamp(name as ColorName),
   }),
   {} as ColorRamps,
 );
-
-export const color: Readonly<ColorNames> = COLOR;
-export const colorRamp: Readonly<typeof COLOR_RAMPS> = COLOR_RAMPS;
