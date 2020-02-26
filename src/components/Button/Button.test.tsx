@@ -2,7 +2,7 @@ import React from 'react'
 import { render, RenderResult } from '@testing-library/react'
 import userEvent from "@testing-library/user-event";
 import { testProp } from '../test-selector';
-import { Button } from './';
+import { Button } from './Button';
 
 describe('Button', () => {
   const testId = 'EXPECTED TEST ID';

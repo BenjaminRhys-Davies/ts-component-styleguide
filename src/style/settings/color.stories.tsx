@@ -76,6 +76,13 @@ export const Color = () => (
   </>
 );
 
+Color.story = {
+  parameters: {
+    jest: ['color.test.ts'],
+    knobs: { disabled: true },
+  },
+};
+
 export default {
   component: Color,
   title: 'Settings',

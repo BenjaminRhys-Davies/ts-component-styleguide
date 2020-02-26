@@ -1,5 +1,5 @@
 {
-  "name": "ts-component-styleguide",
+  "name": "ts-design-system",
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
@@ -8,14 +8,17 @@
     "lint": "./node_modules/.bin/eslint --ext .js,.jsx,.ts,.tsx ./src",
     "start": "ts-node ./src/index.ts",
     "start:watch": "nodemon",
-    "storybook": "start-storybook -s ./src/assets",
+    "prebuild:storybook": "npm run test:report || true",
+    "build:storybook": "start-storybook -s ./src/assets",
+    "storybook": "npm run build:storybook",
     "test": "ts-node ./node_modules/jest/bin/jest",
     "test:watch": "npm run test -- --watch",
-    "test:coverage": "npm run test -- --coverage"
+    "test:coverage": "npm run test -- --coverage",
+    "test:report": "npm run test -- --json --outputFile=./.jest-test-results.json"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:BenjaminRhys-Davies/ts-component-styleguide.git"
+    "url": "git@github.com:BenjaminRhys-Davies/ts-design-system.git"
   },
   "private": true,
   "keywords": [],
@@ -24,6 +27,7 @@
   "devDependencies": {
     "@babel/core": "^7.8.4",
     "@storybook/addon-info": "^5.3.13",
+    "@storybook/addon-jest": "^5.3.14",
     "@storybook/addon-knobs": "^5.3.13",
     "@storybook/preset-typescript": "^1.2.0",
     "@storybook/react": "^5.3.14",

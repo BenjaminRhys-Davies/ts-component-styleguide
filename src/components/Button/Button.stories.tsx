@@ -1,13 +1,7 @@
 import React from 'react';
-import { withKnobs, select, boolean, text } from "@storybook/addon-knobs";
+import { select, boolean, text } from '@storybook/addon-knobs';
 import { color, ColorName } from '../../style/settings/color';
-import { Button } from '.';
-
-export default {
-  component: Button,
-  title: 'Button',
-  decorators: [withKnobs],
-};
+import { Button } from './Button';
 
 export const properties = (): JSX.Element => (
   <Button
@@ -19,3 +13,14 @@ export const properties = (): JSX.Element => (
     {text('Label', 'Hello button')}
   </Button>
 );
+
+properties.story = {
+  parameters: {
+    jest: ['Button.test.tsx'],
+  },
+};
+
+export default {
+  component: Button,
+  title: 'Button',
+};
