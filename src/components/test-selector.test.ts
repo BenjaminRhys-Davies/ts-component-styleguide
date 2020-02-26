@@ -1,5 +1,5 @@
 // Under test
-import { testAttribute, testProp } from './test-selector';
+import { testAttribute, testIdAttribute, testIdProp, testProp } from './test-selector';
 
 type TestData = {
   args: Parameters<typeof testAttribute>;
@@ -55,7 +55,7 @@ describe('TestSelector', () => {
     describe('can handle', () => {
       testData.map(({ expected, args, name }) => {
         it(name, () => {
-          expect(testAttribute.apply(null, args)).toEqual({ 'data-testid': expected });
+          expect(testAttribute.apply(null, args)).toEqual({ [testIdAttribute]: expected });
         });
       });
 
@@ -76,7 +76,7 @@ describe('TestSelector', () => {
         });
 
         it('result is returned', () => {
-          expect(result).toEqual({ 'data-testid': decoratorResult });
+          expect(result).toEqual({ [testIdAttribute]: decoratorResult });
         });
       });
     });
@@ -86,7 +86,7 @@ describe('TestSelector', () => {
     describe('can handle', () => {
       testData.map(({ expected, args, name }) => {
         it(name, () => {
-          expect(testProp.apply(null, args)).toEqual({ testId: expected });
+          expect(testProp.apply(null, args)).toEqual({ [testIdProp]: expected });
         });
       });
 
@@ -107,7 +107,7 @@ describe('TestSelector', () => {
         });
 
         it('result is returned', () => {
-          expect(result).toEqual({ testId: decoratorResult });
+          expect(result).toEqual({ [testIdProp]: decoratorResult });
         });
       });
     });

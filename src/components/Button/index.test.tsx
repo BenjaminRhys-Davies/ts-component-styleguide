@@ -1,5 +1,6 @@
 import React from 'react'
-import { render, fireEvent, RenderResult } from '@testing-library/react'
+import { render, RenderResult } from '@testing-library/react'
+import userEvent from "@testing-library/user-event";
 import { testProp } from '../test-selector';
 import { Button } from './';
 
@@ -25,27 +26,37 @@ describe('Button', () => {
       });
 
       it('be busy', () => {
-        expect(result.getByTestId(testId)['aria-busy']).toBeUndefined();
+        expect(result.getByTestId(testId)).not.toHaveAttribute('aria-busy');
       });
 
       it('be disabled', () => {
-        expect(result.getByTestId(testId)['aria-disabled']).toBeUndefined();
+        expect(result.getByTestId(testId)).not.toHaveAttribute('aria-disabled');
+        expect(result.getByTestId(testId)).not.toHaveAttribute('disabled');
       });
     });
   });
 
   describe('can', () => {
     describe('have', () => {
-      const testId = 'EXPETED TEST ID';
+      const props = {
+        ariaLabel: 'EXPECTED ARIA LABEL',
+        ariaLabelledBy: 'EXPECTED ARIA LABELLED BY',
+      };
 
-      beforeAll(() => {
+      beforeEach(() => {
         result = render(
-          <Button {...testProp(testId)}>{text}</Button>
+          <Button {...testProp(testId)} {...props}>{text}</Button>
         );
       });
 
       it('testId', () => {
         expect(result.getByTestId(testId)).not.toBeNull();
+      });
+      it('ariaLabel', () => {
+        expect(result.getByTestId(testId)).toHaveAttribute('aria-label', props.ariaLabel);
+      });
+      it('ariaLabelledBy', () => {
+        expect(result.getByTestId(testId)).toHaveAttribute('aria-labelledby', props.ariaLabelledBy);
       });
     });
     describe('be', () => {
@@ -63,7 +74,7 @@ describe('Button', () => {
         result = render(
           <Button {...testProp(testId)} onClick={onClick}>{text}</Button>
         );
-        fireEvent.click(result.getByTestId(testId));
+        userEvent.click(result.getByTestId(testId));
         expect(onClick).toHaveBeenCalled();
       });
     });
@@ -81,6 +92,7 @@ describe('Button', () => {
           <Button {...testProp(testId)} isDisabled={true}>{text}</Button>
         );
         expect(result.getByTestId(testId)).toHaveAttribute('aria-disabled', 'true');
+        expect(result.getByTestId(testId)).toHaveAttribute('disabled');
       });
     });
   });
