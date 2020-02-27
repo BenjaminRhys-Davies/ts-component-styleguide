@@ -34,8 +34,10 @@ module.exports = {
     'react-hooks',
     'promise',
     'sonarjs',
+    'prettier',
   ],
   rules: {
+    'prettier/prettier': ['error'],
     'curly': ['error', 'all'],
     // Too restrictive, writing ugly code to defend against a very unlikely scenario: https://eslint.org/docs/rules/no-prototype-builtins
     'no-prototype-builtins': 'off',
