@@ -80,46 +80,76 @@ describe('font', () => {
               },
             ],
             name: 'EXPECTED FAMILY #2',
-          }
+          },
         ];
 
         it('with font-faces', () => {
           expect(font(fontFamilies)).toEqual(expect.arrayContaining(
-            fontFamilies.flatMap(({ faces = [] }) => faces.map(() => expect.stringContaining(`@font-face {`))),
+            fontFamilies.reduce(
+              (acc, { faces = [] }) => [
+                ...acc,
+                ...faces.map(() => expect.stringContaining(`@font-face {`)),
+              ],
+              [] as string[],
+            ),
           ));
         });
 
         it('with font-families', () => {
           expect(font(fontFamilies)).toEqual(expect.arrayContaining(
-            fontFamilies.flatMap(({ faces = [], name }) => faces.map(() => expect.stringContaining(`font-family: "${name}";`))),
+            fontFamilies.reduce(
+              (acc, { faces = [], name }) => [
+                ...acc,
+                ...faces.map(() => expect.stringContaining(`font-family: "${name}";`)),
+              ],
+              [] as string[],
+            ),
           ));
         });
 
         it('with font-weight', () => {
           expect(font(fontFamilies)).toEqual(expect.arrayContaining(
-            fontFamilies.flatMap(({ faces = [] }) => faces.map(({ weight }) => expect.stringContaining(`font-weight: ${weight};`))),
+            fontFamilies.reduce(
+              (acc, { faces = [] }) => [
+                ...acc,
+                ...faces.map(({ weight }) => expect.stringContaining(`font-weight: ${weight};`)),
+              ],
+              [] as string[],
+            ),
           ));
         });
 
         it('with font-style', () => {
           expect(font(fontFamilies)).toEqual(expect.arrayContaining(
-            fontFamilies.flatMap(({ faces = [] }) => faces.map(({ style }) => expect.stringContaining(`font-style: ${style};`))),
+            fontFamilies.reduce(
+              (acc, { faces = [] }) => [
+                ...acc,
+                ...faces.map(({ style }) => expect.stringContaining(`font-style: ${style};`)),
+              ],
+              [] as string[],
+            ),
           ));
         });
 
         it('with src', () => {
           expect(font(fontFamilies)).toEqual(expect.arrayContaining(
-            fontFamilies.flatMap(({ faces = [] }) => faces.flatMap(({ fileName, path }) =>
-              expect.stringContaining(
-                [
-                  `src: url("${path}${fileName}.eot?#iefix") format("embedded-opentype")`,
-                  `url("${path}${fileName}.svg#svgFontName") format("svg")`,
-                  `url("${path}${fileName}.ttf") format("truetype")`,
-                  `url("${path}${fileName}.woff") format("woff")`,
-                  `url("${path}${fileName}.woff2") format("woff2")`,
-                ].join(','),
-              ),
-            ))
+            fontFamilies.reduce(
+              (acc, { faces = [] }) => [
+                ...acc,
+                ...faces.map(({ fileName, path }) => 
+                  expect.stringContaining(
+                    [
+                      `src: url("${path}${fileName}.eot?#iefix") format("embedded-opentype")`,
+                      `url("${path}${fileName}.svg#svgFontName") format("svg")`,
+                      `url("${path}${fileName}.ttf") format("truetype")`,
+                      `url("${path}${fileName}.woff") format("woff")`,
+                      `url("${path}${fileName}.woff2") format("woff2")`,
+                    ].join(','),
+                  ),
+                ),
+              ],
+              [] as string[],
+            ),
           ));
         });
       });
