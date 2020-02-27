@@ -41,13 +41,15 @@ describe('Color', () => {
       tintMock.mockClear();
     });
 
-    Object.keys(color).forEach(str => {
-      describe(str, () => {
+    Object.keys(color).forEach(c => {
+      describe(c, () => {
         testData.forEach(({ name, expected }) => {
           it(name, () => {
-            expect(colorRamp[str as Color]).toEqual(expect.objectContaining({
-              [name]: expected(str as Color),
-            }));
+            expect(colorRamp[c as Color]).toEqual(
+              expect.objectContaining({
+                [name]: expected(c as Color),
+              }),
+            );
           });
         });
       });

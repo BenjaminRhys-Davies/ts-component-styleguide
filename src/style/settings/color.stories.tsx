@@ -1,9 +1,9 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { readableColor } from 'polished';
-import { color, colorRamp } from './color';
+import { color, colorRamp, Ramp } from './color';
 
-const rampOrder = ['lightest', 'lighter', 'light', 'default', 'dark', 'darker'];
+const rampOrder: Ramp[] = ['lightest', 'lighter', 'light', 'default', 'dark', 'darker'];
 
 const ListStyled = styled.dl`
   overflow-y: hidden;
@@ -36,42 +36,48 @@ const RampStyled = styled.button`
   position: relative;
   text-align: center;
   transition: width 0.5s, transform 0.5s;
-  width: ${100/rampOrder.length}vw;
+  width: ${100 / rampOrder.length}vw;
   z-index: 1;
 
-  &:focus, &:hover {
+  &:focus,
+  &:hover {
     outline: 0;
     transform: scale(1.1);
-    width: ${100/rampOrder.length * 2}vw;
+    width: ${(100 / rampOrder.length) * 2}vw;
     z-index: 2;
   }
 `;
 
-export const Color = () => (
+export const Color = (): JSX.Element => (
   <>
     <ListStyled>
-      {Object.keys(color).map(c =>
+      {Object.keys(color).map(c => (
         <>
-          <ColorStyled style={{
-            backgroundColor: color[c],
-            color: readableColor(color[c]),
-            textShadow: `0 0 0.25rem ${readableColor(color[c], color.white, color.black)}`,
-          }}>
+          <ColorStyled
+            style={{
+              backgroundColor: color[c],
+              color: readableColor(color[c]),
+              textShadow: `0 0 0.25rem ${readableColor(color[c], color.white, color.black)}`,
+            }}
+          >
             {c}
           </ColorStyled>
           <ColorRampStyled>
             {rampOrder.map(o => (
-              <RampStyled style={{
-                backgroundColor: colorRamp[c][o],
-                color: readableColor(colorRamp[c][o]),
-                textShadow: `0 0 0.2rem ${readableColor(colorRamp[c][o], color.white, color.black)}`,
-              }}>
+              <RampStyled
+                key={`${c}.${o}`}
+                style={{
+                  backgroundColor: colorRamp[c][o],
+                  color: readableColor(colorRamp[c][o]),
+                  textShadow: `0 0 0.2rem ${readableColor(colorRamp[c][o], color.white, color.black)}`,
+                }}
+              >
                 {o}
               </RampStyled>
             ))}
           </ColorRampStyled>
         </>
-      )}
+      ))}
     </ListStyled>
   </>
 );

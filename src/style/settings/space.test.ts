@@ -7,7 +7,7 @@ describe('Space', () => {
       const { number, rem } = space[size];
 
       it('number', () => {
-        expect(number).toEqual(jasmine.any(Number));
+        expect(number).toEqual(expect.any(Number));
       });
       it('rem', () => {
         expect(rem).toEqual(`${number}rem`);

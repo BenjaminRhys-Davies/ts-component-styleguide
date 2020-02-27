@@ -7,13 +7,13 @@ export const weight = {
 export type Weights = keyof typeof weight;
 
 const fontSizes = {
-  labelSmall: 0.75,       // 12px
-  labelRegular: 0.8125,   // 13px
-  labelLarge: 0.875,      // 14px
-  default: 1,             // 16px
-  displaySmall: 1.125,    // 18px
+  labelSmall: 0.75, // 12px
+  labelRegular: 0.8125, // 13px
+  labelLarge: 0.875, // 14px
+  default: 1, // 16px
+  displaySmall: 1.125, // 18px
   displayRegular: 1.4375, // 23px
-  displayLarge: 2,        // 32px
+  displayLarge: 2, // 32px
 };
 
 export type FontSizes = keyof typeof fontSizes;

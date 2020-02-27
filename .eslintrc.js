@@ -1,12 +1,9 @@
 module.exports = {
-  plugins: [
-    '@typescript-eslint',
-    'eslint-comments',
-    'jest',
-    'prettier',
-    'react',
-    'promise',
-  ],
+  env: {
+    browser: true,
+    es6: true,
+    jest: true,
+  },
   extends: [
     'airbnb-typescript',
     'plugin:@typescript-eslint/recommended',
@@ -14,20 +11,32 @@ module.exports = {
     'plugin:jest/recommended',
     'plugin:promise/recommended',
     'prettier',
-    'prettier/@typescript-eslint',
     'prettier/react',
+    'prettier/@typescript-eslint',
   ],
-  env: {
-    node: true,
-    browser: true,
-    jest: true,
+  globals: {
+    Atomics: 'readonly',
+    SharedArrayBuffer: 'readonly',
   },
+  parser: '@typescript-eslint/parser',
   parserOptions: {
-    ecmaVersion: 6,
-    project: './tsconfig.json',
+    ecmaVersion: 2018,
+    ecmaFeatures: {
+      jsx: true,
+    },
     sourceType: 'module',
+    project: './tsconfig.json',
   },
+  plugins: [
+    '@typescript-eslint',
+    'eslint-comments',
+    'jest',
+    'react-hooks',
+    'promise',
+    'sonarjs',
+  ],
   rules: {
+    'curly': ['error', 'all'],
     // Too restrictive, writing ugly code to defend against a very unlikely scenario: https://eslint.org/docs/rules/no-prototype-builtins
     'no-prototype-builtins': 'off',
     // https://basarat.gitbooks.io/typescript/docs/tips/defaultIsBad.html
@@ -37,13 +46,14 @@ module.exports = {
     'react/destructuring-assignment': 'off',
     // No jsx extension: https://github.com/facebook/create-react-app/issues/87#issuecomment-234627904
     'react/jsx-filename-extension': 'off',
+    'react/jsx-props-no-spreading': 'off',
     // Use function hoisting to improve code readability
     'no-use-before-define': [
       'error',
       {
         classes: true,
         functions: false,
-        variables: true
+        variables: true,
       },
     ],
     // Makes no sense to allow type inferrence for expression parameters, but require typing the response
@@ -54,7 +64,6 @@ module.exports = {
         allowTypedFunctionExpressions: true,
       },
     ],
-    '@typescript-eslint/indent': ['error', 2],
     '@typescript-eslint/explicit-member-accessibility': [
       'error',
       {

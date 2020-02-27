@@ -3,7 +3,7 @@ import { base, fontSize, weight } from './typography';
 
 describe('Typography', () => {
   it('base', () => {
-    expect(base).toEqual(jasmine.any(Number));
+    expect(base).toEqual(expect.any(Number));
   });
 
   describe('fontSize', () => {
@@ -12,7 +12,7 @@ describe('Typography', () => {
         const { number, rem } = fontSize[size];
 
         it('number', () => {
-          expect(number).toEqual(jasmine.any(Number));
+          expect(number).toEqual(expect.any(Number));
         });
         it('rem', () => {
           expect(rem).toEqual(`${number}rem`);
@@ -24,7 +24,7 @@ describe('Typography', () => {
   describe('weight', () => {
     Object.keys(weight).forEach(w => {
       it(w, () => {
-        expect(weight[w]).toEqual(jasmine.any(Number));
+        expect(weight[w]).toEqual(expect.any(Number));
       });
     });
   });

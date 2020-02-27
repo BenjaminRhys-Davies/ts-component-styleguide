@@ -17,7 +17,7 @@ import { base, defaultFonts } from './base';
 describe('base', () => {
   describe('base', () => {
     it('exports a string', () => {
-      expect(base).toEqual(jasmine.any(String));
+      expect(base).toEqual(expect.any(String));
     });
     it('contains reset', () => {
       expect(base).toContain(resetResult);

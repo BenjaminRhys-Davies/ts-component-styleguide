@@ -1,6 +1,6 @@
-import React from 'react'
-import { render, RenderResult } from '@testing-library/react'
-import userEvent from "@testing-library/user-event";
+import React from 'react';
+import { render, RenderResult } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { testProp } from '../test-selector';
 import { Button } from './Button';
 
@@ -45,7 +45,9 @@ describe('Button', () => {
 
       beforeEach(() => {
         result = render(
-          <Button {...testProp(testId)} {...props}>{text}</Button>
+          <Button {...testProp(testId)} {...props}>
+            {text}
+          </Button>,
         );
       });
 
@@ -72,24 +74,28 @@ describe('Button', () => {
 
       it('clicked', () => {
         result = render(
-          <Button {...testProp(testId)} onClick={onClick}>{text}</Button>
+          <Button {...testProp(testId)} onClick={onClick}>
+            {text}
+          </Button>,
         );
         userEvent.click(result.getByTestId(testId));
         expect(onClick).toHaveBeenCalled();
       });
-    });
 
-    describe('be', () => {
       it('busy', () => {
         result = render(
-          <Button {...testProp(testId)} isBusy={true}>{text}</Button>
+          <Button {...testProp(testId)} isBusy>
+            {text}
+          </Button>,
         );
         expect(result.getByTestId(testId)).toHaveAttribute('aria-busy', 'true');
       });
 
       it('disabled', () => {
         result = render(
-          <Button {...testProp(testId)} isDisabled={true}>{text}</Button>
+          <Button {...testProp(testId)} isDisabled>
+            {text}
+          </Button>,
         );
         expect(result.getByTestId(testId)).toHaveAttribute('aria-disabled', 'true');
         expect(result.getByTestId(testId)).toHaveAttribute('disabled');

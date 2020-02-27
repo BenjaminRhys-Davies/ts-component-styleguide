@@ -9,8 +9,7 @@ export interface DataTestId {
   [testIdAttribute]?: string;
 }
 
-const parseTestId = (tId?: string | TestProps): undefined | string =>
-  typeof tId === 'object' ? tId[testIdProp] : tId;
+const parseTestId = (tId?: string | TestProps): undefined | string => (typeof tId === 'object' ? tId[testIdProp] : tId);
 
 export const testProp = (
   testId?: string | TestProps,

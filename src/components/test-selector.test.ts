@@ -53,9 +53,9 @@ describe('TestSelector', () => {
 
   describe('testAttribute ()', () => {
     describe('can handle', () => {
-      testData.map(({ expected, args, name }) => {
+      testData.forEach(({ expected, args, name }) => {
         it(name, () => {
-          expect(testAttribute.apply(null, args)).toEqual({ [testIdAttribute]: expected });
+          expect(testAttribute(...args)).toEqual({ [testIdAttribute]: expected });
         });
       });
 
@@ -84,9 +84,9 @@ describe('TestSelector', () => {
 
   describe('testProp ()', () => {
     describe('can handle', () => {
-      testData.map(({ expected, args, name }) => {
+      testData.forEach(({ expected, args, name }) => {
         it(name, () => {
-          expect(testProp.apply(null, args)).toEqual({ [testIdProp]: expected });
+          expect(testProp(...args)).toEqual({ [testIdProp]: expected });
         });
       });
 
