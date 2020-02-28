@@ -1,6 +1,6 @@
 import React from 'react';
 import { select, boolean, text } from '@storybook/addon-knobs';
-import { color, ColorName } from '../../style/settings/color';
+import { color, ColorName } from '../../style/settings/color/color';
 import { Button } from './Button';
 
 export const properties = (): JSX.Element => (

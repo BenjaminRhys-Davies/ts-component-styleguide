@@ -1,9 +1,9 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { readableColor } from 'polished';
-import { color, colorRamp, Ramp } from './color';
+import { color, Ramp } from './color';
 
-const rampOrder: Ramp[] = ['lightest', 'lighter', 'light', 'default', 'dark', 'darker'];
+const rampOrder: Ramp[] = ['lightest', 'lighter', 'light', 'dark', 'darker'];
 
 const ListStyled = styled.dl`
   overflow-y: hidden;
@@ -55,9 +55,9 @@ export const Color = (): JSX.Element => (
         <>
           <ColorStyled
             style={{
-              backgroundColor: color[c],
-              color: readableColor(color[c]),
-              textShadow: `0 0 0.25rem ${readableColor(color[c], color.white, color.black)}`,
+              backgroundColor: color[c].default,
+              color: readableColor(color[c].default),
+              textShadow: `0 0 0.25rem ${readableColor(color[c].default, color.white.default, color.black.default)}`,
             }}
           >
             {c}
@@ -67,9 +67,9 @@ export const Color = (): JSX.Element => (
               <RampStyled
                 key={`${c}.${o}`}
                 style={{
-                  backgroundColor: colorRamp[c][o],
-                  color: readableColor(colorRamp[c][o]),
-                  textShadow: `0 0 0.2rem ${readableColor(colorRamp[c][o], color.white, color.black)}`,
+                  backgroundColor: color[c][o],
+                  color: readableColor(color[c][o]),
+                  textShadow: `0 0 0.2rem ${readableColor(color[c][o], color.white.default, color.black.default)}`,
                 }}
               >
                 {o}

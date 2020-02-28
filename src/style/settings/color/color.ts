@@ -1,20 +1,20 @@
 import { shade, tint } from 'polished';
 
-export const color = {
+const colors = {
   richPurple: '#3d0066',
   electricBlue: '#01e1fd',
   white: '#ffffff',
   black: '#000000',
 };
 
-export type ColorName = keyof typeof color;
+export type ColorName = keyof typeof colors;
 export type ColorNames = {
   [color in ColorName]: string;
 };
 
 export type Ramp = 'lightest' | 'lighter' | 'light' | 'default' | 'dark' | 'darker';
 
-type GenerateColorRamps = {
+type GenerateRamps = {
   [d in Ramp]: (hex: string) => string;
 };
 
@@ -22,7 +22,7 @@ type Ramps = {
   [d in Ramp]: string;
 };
 
-const ramps: GenerateColorRamps = {
+const generateRamps: GenerateRamps = {
   lightest: hex => tint(0.8, hex),
   lighter: hex => tint(0.6, hex),
   light: hex => tint(0.4, hex),
@@ -31,23 +31,27 @@ const ramps: GenerateColorRamps = {
   darker: hex => shade(0.6, hex),
 };
 
-const generateColorRamp = (name: ColorName): Ramps =>
-  Object.keys(ramps).reduce(
+const generateColorRamp = (hex: string): Ramps =>
+  Object.keys(generateRamps).reduce(
     (acc, ramp) => ({
       ...acc,
-      [ramp]: ramps[ramp as Ramp](color[name]),
+      [ramp]: generateRamps[ramp as Ramp](hex),
     }),
-    {} as Ramps,
+    {
+      toString() {
+        return hex;
+      },
+    } as Ramps,
   );
 
-export type ColorRamps = {
+export type Color = {
   [color in ColorName]: Ramps;
 };
 
-export const colorRamp = Object.keys(color).reduce(
+export const color = Object.keys(colors).reduce(
   (acc, name) => ({
     ...acc,
-    [name]: generateColorRamp(name as ColorName),
+    [name]: generateColorRamp(colors[name]),
   }),
-  {} as ColorRamps,
+  {} as Color,
 );

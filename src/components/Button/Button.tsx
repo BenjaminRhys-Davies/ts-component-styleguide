@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ButtonStyled, LabelStyled, BusyStyled, MotionStyled } from './styled/index.styled';
-import { colorRamp, ColorName } from '../../style/settings/color';
+import { color, ColorName } from '../../style/settings/color';
 import { testAttribute, TestProps } from '../test-selector';
 
 export interface ButtonProps extends TestProps, React.HTMLProps<HTMLButtonElement> {
@@ -44,7 +44,7 @@ export const Button = (props: ButtonProps): JSX.Element => {
         colorName={colorName}
         initial="initial"
         variants={{
-          hover: { backgroundColor: colorRamp[colorName].light },
+          hover: { backgroundColor: color[colorName].light },
           initial: { scale: 1 },
           tapped: { scale: 0.9 },
         }}

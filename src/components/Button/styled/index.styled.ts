@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { readableColor } from 'polished';
-import { color, ColorName } from '../../../style/settings/color';
+import { color, ColorName } from '../../../style/settings/color/color';
 import { space } from '../../../style/settings/space';
 import { fontSize, weight } from '../../../style/settings/typography';
 
@@ -28,7 +28,7 @@ export const ButtonStyled = styled(motion.button)(
     background-color: transparent;
     border: none;
     border-radius: ${space.large.number * 2 + space.xxxSmall.number}rem;
-    color: ${readableColor(color[colorName])};
+    color: ${readableColor(color[colorName].default)};
     cursor: ${isDisabled ? 'not-allowed' : isBusy ? 'wait' : 'pointer'};
     display: inline-block;
     font-size: ${isSmall ? fontSize.labelLarge.rem : fontSize.default.rem};
@@ -92,7 +92,7 @@ export const BusyStyled = styled.div(
 
 export const MotionStyled = styled(motion.div)(
   ({ colorName }: MotionProps) => `
-    background-color: ${color[colorName]};
+    background-color: ${color[colorName].default};
     border-radius: ${space.large.rem};
     height: 100%;
     left: 0;
