@@ -13,7 +13,7 @@
     "prebuild:storybook": "npm run test:report || true",
     "build:storybook": "start-storybook -s ./src/assets",
     "storybook": "npm run build:storybook",
-    "deploy-storybook": "build-storybook -s ./src/assets -o docs",
+    "deploy-storybook": "npm run test:report && build-storybook -s ./src/assets -o docs",
     "test": "jest",
     "test:watch": "npm run test -- --watch",
     "test:coverage": "npm run test -- --coverage",

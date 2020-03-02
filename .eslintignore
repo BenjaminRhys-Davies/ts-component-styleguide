@@ -6,6 +6,5 @@ npm-debug.log
 scripts
 yarn-error.log
 jest.config.js
-jest.setup.js
 prettier.config.js
 .jest-test-results.json
