@@ -1,6 +1,7 @@
 process.env.TZ = 'GMT';
 
 module.exports = {
+  collectCoverage: true,
   collectCoverageFrom: ['src/**/*.{js,ts,tsx}', '!**/node_modules/**', '!**/build/**', '!**/coverage/**', '!**/scripts/**'],
   coverageDirectory: './coverage',
   globals: {
@@ -8,6 +9,7 @@ module.exports = {
       diagnostics: false,
     },
   },
+  mapCoverage: true,
   modulePaths: ['./'],
   preset: 'ts-jest',
   setupFilesAfterEnv: ['./src/jest.setup.ts'],
