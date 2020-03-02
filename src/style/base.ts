@@ -49,7 +49,7 @@ export const defaultFonts = (): string[] =>
           },
         ].map(face => ({
           ...face,
-          path: '/fonts/',
+          path: 'fonts/',
           sources: ['eot', 'woff2', 'woff', 'ttf'],
         })),
       },

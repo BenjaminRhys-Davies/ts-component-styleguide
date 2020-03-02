@@ -34,28 +34,28 @@ describe('base', () => {
             faces: [
               {
                 fileName: 'GT-Walsheim-Pro-Regular',
-                path: '/fonts/',
+                path: 'fonts/',
                 sources: ['eot', 'woff2', 'woff', 'ttf'],
                 style: 'normal',
                 weight: weightResult.default,
               },
               {
                 fileName: 'GT-Walsheim-Pro-Medium',
-                path: '/fonts/',
+                path: 'fonts/',
                 sources: ['eot', 'woff2', 'woff', 'ttf'],
                 style: 'normal',
                 weight: weightResult.medium,
               },
               {
                 fileName: 'GT-Walsheim-Pro-Regular-Oblique',
-                path: '/fonts/',
+                path: 'fonts/',
                 sources: ['eot', 'woff2', 'woff', 'ttf'],
                 style: 'italic',
                 weight: weightResult.default,
               },
               {
                 fileName: 'GT-Walsheim-Pro-Medium-Oblique',
-                path: '/fonts/',
+                path: 'fonts/',
                 sources: ['eot', 'woff2', 'woff', 'ttf'],
                 style: 'italic',
                 weight: weightResult.medium,
