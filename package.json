@@ -5,8 +5,8 @@
   "main": "build/index.js",
   "typings": "build/index.d.ts",
   "scripts": {
-    "clean": "npm run test -- --clearCache",
-    "compile": "tsc",
+    "clean": "npm run test -- --clearCache && rimraf ./build ./coverage ./.jest-test-results.json",
+    "compile": "./node_modules/.bin/tsc",
     "lint": "./node_modules/.bin/eslint --ext .js,.jsx,.ts,.tsx ./src",
     "start": "ts-node ./src/index.ts",
     "start:watch": "nodemon",
@@ -66,6 +66,7 @@
     "react-dom": "^16.12.0",
     "react-is": "^16.12.0",
     "regenerator-runtime": "^0.13.3",
+    "rimraf": "^3.0.2",
     "ts-jest": "^25.1.0",
     "ts-loader": "^6.2.1",
     "ts-node": "^8.6.2",
