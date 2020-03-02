@@ -72,6 +72,10 @@ module.exports = {
       },
     ].forEach(rule => config.module.rules.push(rule));
 
+    config.performance = {
+      hints: false
+    };
+
     config.resolve.extensions.push('.ts', '.tsx');
     return config;
   },
