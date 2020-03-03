@@ -13,7 +13,7 @@
     "prebuild:storybook": "npm run test:report || true",
     "build:storybook": "start-storybook -s ./src/assets",
     "storybook": "npm run build:storybook",
-    "deploy-storybook": "build-storybook -s ./src/assets -o docs",
+    "deploy-storybook": "npm run test:report && build-storybook -s ./src/assets -o docs",
     "test": "jest",
     "test:watch": "npm run test -- --watch",
     "test:coverage": "npm run test -- --coverage",
@@ -79,6 +79,7 @@
     "@testing-library/jest-dom": "^5.1.1",
     "@testing-library/react": "^9.4.1",
     "framer-motion": "^1.8.4",
+    "jest-extended": "^0.11.5",
     "polished": "^3.4.4",
     "react": "^16.12.0",
     "styled-components": "^5.0.1"

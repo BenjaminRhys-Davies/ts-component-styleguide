@@ -24,7 +24,7 @@ export const LabelStyled = styled(motion.span)`
 `;
 
 export const ButtonStyled = styled(motion.button)(
-  ({ colorName, isBusy, isSmall, isDisabled }: ButtonProps) => `
+  ({ colorName, isBusy, isDisabled, isSmall }: ButtonProps) => `
     background-color: transparent;
     border: none;
     border-radius: ${space.large.number * 2 + space.xxxSmall.number}rem;
