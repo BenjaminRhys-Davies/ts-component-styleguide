@@ -8,6 +8,7 @@ module.exports = {
     'airbnb-typescript',
     'plugin:@typescript-eslint/recommended',
     'plugin:eslint-comments/recommended',
+    'plugin:jsx-a11y/strict',
     'plugin:jest/recommended',
     'plugin:promise/recommended',
     'prettier',
@@ -30,6 +31,7 @@ module.exports = {
   plugins: [
     '@typescript-eslint',
     'eslint-comments',
+    'jsx-a11y',
     'jest',
     'react-hooks',
     'promise',
@@ -37,7 +39,6 @@ module.exports = {
     'prettier',
   ],
   rules: {
-    'prettier/prettier': ['error'],
     'curly': ['error', 'all'],
     // Too restrictive, writing ugly code to defend against a very unlikely scenario: https://eslint.org/docs/rules/no-prototype-builtins
     'no-prototype-builtins': 'off',
