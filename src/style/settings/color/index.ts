@@ -1,1 +1,1 @@
-export { color, ColorName } from './color';
+export { color } from './color';

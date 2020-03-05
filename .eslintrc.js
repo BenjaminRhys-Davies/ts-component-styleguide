@@ -25,12 +25,14 @@ module.exports = {
     ecmaFeatures: {
       jsx: true,
     },
-    sourceType: 'module',
     project: './tsconfig.json',
+    sourceType: 'module',
+    tsconfigRootDir: './',
   },
   plugins: [
     '@typescript-eslint',
     'eslint-comments',
+    'import',
     'jsx-a11y',
     'jest',
     'react-hooks',
@@ -115,6 +117,11 @@ module.exports = {
   settings: {
     react: {
       version: 'detect',
+    },
+    'import/resolver': {
+      typescript: {
+        directory: '.',
+      },
     },
   },
 };

@@ -1,5 +1,5 @@
 // Under test
-import { testAttribute, testIdAttribute, testIdProp, testProp } from './test-selector';
+import { testAttribute, testIdAttribute, testIdProp, testProp } from './selector';
 
 type TestData = {
   args: Parameters<typeof testAttribute>;
@@ -7,7 +7,7 @@ type TestData = {
   name: string;
 };
 
-describe('TestSelector', () => {
+describe('Test Selector', () => {
   const testData: TestData[] = [
     {
       args: [undefined],

@@ -7,11 +7,6 @@ const colors = {
   black: '#000000',
 };
 
-export type ColorName = keyof typeof colors;
-export type ColorNames = {
-  [color in ColorName]: string;
-};
-
 export type Ramp = 'lightest' | 'lighter' | 'light' | 'default' | 'dark' | 'darker';
 
 type GenerateRamps = {
@@ -45,7 +40,7 @@ const generateColorRamp = (hex: string): Ramps =>
   );
 
 export type Color = {
-  [color in ColorName]: Ramps;
+  [color in keyof typeof colors]: Ramps;
 };
 
 export const color = Object.keys(colors).reduce(

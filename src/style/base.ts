@@ -1,6 +1,6 @@
+import { weight } from '@settings/typography';
 import { font } from './generators/font';
 import { reset } from './reset';
-import { weight } from './settings/typography';
 
 export const base = `
   ${reset}

@@ -1,12 +1,11 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { readableColor } from 'polished';
-import { color, ColorName } from '../../../style/settings/color/color';
-import { space } from '../../../style/settings/space';
-import { fontSize, weight } from '../../../style/settings/typography';
+import { color, space } from '@settings';
+import { fontSize, weight } from '@settings/typography';
 
 interface MotionProps {
-  colorName: ColorName;
+  colorName: keyof typeof color;
 }
 
 interface BusyProps {

@@ -4,22 +4,18 @@ export const weight = {
   regular: 300,
 };
 
-export type Weights = keyof typeof weight;
-
 const fontSizes = {
-  labelSmall: 0.75, // 12px
-  labelRegular: 0.8125, // 13px
-  labelLarge: 0.875, // 14px
-  default: 1, // 16px
-  displaySmall: 1.125, // 18px
-  displayRegular: 1.4375, // 23px
-  displayLarge: 2, // 32px
+  labelSmall: 0.75,
+  labelRegular: 0.8125,
+  labelLarge: 0.875,
+  default: 1,
+  displaySmall: 1.125,
+  displayRegular: 1.4375,
+  displayLarge: 2,
 };
 
-export type FontSizes = keyof typeof fontSizes;
-
 export type FontSize = {
-  [size in FontSizes]: {
+  [size in keyof typeof fontSizes]: {
     number: number;
     rem: string;
   };

@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, RenderResult } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { testProp } from '../../helper/test/test-selector';
+import { testProp } from '@helpers/test';
 import { Button } from './Button';
 
 describe('Button', () => {

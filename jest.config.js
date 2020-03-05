@@ -6,6 +6,7 @@ module.exports = {
   coverageDirectory: './coverage',
   globals: {
     'ts-jest': {
+      compiler: 'ttypescript',
       diagnostics: false,
     },
   },

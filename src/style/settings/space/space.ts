@@ -1,27 +1,25 @@
-const SPACING = {
-  xxxSmall: 0.125, // 2px
-  xxSmall: 0.25, // 4px
-  xSmall: 0.5, // 8px
-  small: 0.75, // 12px
-  default: 1, // 16px
-  large: 1.5, // 24px
+const spaces = {
+  xxxSmall: 0.125,
+  xxSmall: 0.25,
+  xSmall: 0.5,
+  small: 0.75,
+  default: 1,
+  large: 1.5,
 };
 
-type Spacing = keyof typeof SPACING;
-
 export type Space = {
-  [key in Spacing]: {
+  [key in keyof typeof spaces]: {
     number: number;
     rem: string;
   };
 };
 
-export const space = Object.keys(SPACING).reduce(
+export const space = Object.keys(spaces).reduce(
   (acc, key) => ({
     ...acc,
     [key]: {
-      number: SPACING[key],
-      rem: `${SPACING[key]}rem`,
+      number: spaces[key],
+      rem: `${spaces[key]}rem`,
     },
   }),
   {} as Space,

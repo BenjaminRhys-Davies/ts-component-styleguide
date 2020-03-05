@@ -21,6 +21,29 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "outDir": "build",
+    "paths": {
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@helpers/*": [
+        "src/helpers/*"
+      ],
+      "@settings": [
+        "src/style/settings"
+      ],
+      "@settings/*": [
+        "src/style/settings/*"
+      ]
+    },
+    "plugins": [
+      {
+        "transform": "typescript-transform-paths"
+      },
+      {
+        "transform": "typescript-transform-paths",
+        "afterDeclarations": true
+      }
+    ],
     "removeComments": true,
     "rootDir": "src",
     "skipLibCheck": true,
@@ -31,12 +54,12 @@
     "target": "es5",
     "jsx": "react",
     "typeRoots": [
-      "@types",
-      "node_modules/@types"
+      "node_modules/@types",
+      "@types"
     ]
   },
   "include": [
-    "src",
+    "src"
   ],
   "exclude": [
     "build",

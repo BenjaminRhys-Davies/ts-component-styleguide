@@ -1,3 +1,5 @@
+const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
+
 module.exports = {
   addons: [
     '@storybook/addon-jest/register',
@@ -73,10 +75,13 @@ module.exports = {
     ].forEach(rule => config.module.rules.push(rule));
 
     config.performance = {
-      hints: false
+      hints: false,
     };
 
     config.resolve.extensions.push('.ts', '.tsx');
+    config.resolve.plugins = [
+      new TsconfigPathsPlugin({ configFile: './tsconfig.json' }),
+    ];
     return config;
   },
 };

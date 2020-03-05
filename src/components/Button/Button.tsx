@@ -1,12 +1,12 @@
 import * as React from 'react';
+import { color } from '@settings/color';
+import { testAttribute, TestProps } from '@helpers/test';
 import { ButtonStyled, LabelStyled, BusyStyled, MotionStyled } from './styled/index.styled';
-import { color, ColorName } from '../../style/settings/color';
-import { testAttribute, TestProps } from '../../helper/test/test-selector';
 
 export interface ButtonProps extends TestProps, React.HTMLProps<HTMLButtonElement> {
   readonly ariaLabel?: string;
   readonly ariaLabelledBy?: string;
-  readonly colorName?: ColorName;
+  readonly colorName?: keyof typeof color;
   readonly isBusy?: boolean;
   readonly isDisabled?: boolean;
   readonly isSmall?: boolean;

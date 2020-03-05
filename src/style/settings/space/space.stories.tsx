@@ -6,15 +6,15 @@ import { space } from './space';
 
 type Space = keyof typeof space;
 
-interface DivProps {
+interface ParagraphProps {
   marginSpace: Space;
   paddingSpace: Space;
 }
 
-const ParaStyled = styled.div(
-  ({ marginSpace, paddingSpace }: DivProps) => `
+const ParagraphStyled = styled.p(
+  ({ marginSpace, paddingSpace }: ParagraphProps) => `
   background-color: ${color.electricBlue.lightest};
-  border: 1px solid #CCC;
+  border: 1px solid ${color.black.lightest};
   margin: ${space[marginSpace].rem};
   padding: ${space[paddingSpace].rem};
 
@@ -51,12 +51,12 @@ const ParaStyled = styled.div(
 );
 
 export const Space = (): JSX.Element => (
-  <ParaStyled
+  <ParagraphStyled
     marginSpace={select('Margin', Object.keys(space), 'large') as Space}
     paddingSpace={select('Padding', Object.keys(space), 'default') as Space}
   >
-    <span>This is a block</span>
-  </ParaStyled>
+    <span>&nbsp;</span>
+  </ParagraphStyled>
 );
 
 Space.story = {
