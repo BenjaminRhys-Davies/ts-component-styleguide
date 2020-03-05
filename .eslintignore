@@ -8,4 +8,3 @@ yarn-error.log
 jest.config.js
 prettier.config.js
 .jest-test-results.json
-tsconfig-paths-bootstrap.js

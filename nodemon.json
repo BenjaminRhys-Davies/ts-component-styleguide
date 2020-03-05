@@ -1,5 +1,5 @@
 {
-  "ignore": ["**/*.{mock,spec,test}.{ts,tsx}"],
+  "ignore": ["**/*.{test}.{ts,tsx}"],
   "watch": ["src"],
   "ext": "ts",
   "exec": "npm run start"
