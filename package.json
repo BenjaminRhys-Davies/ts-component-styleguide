@@ -1,11 +1,13 @@
 {
   "name": "ts-design-system",
   "version": "0.0.1",
-  "description": "",
+  "description": "A prototype storybook component library",
+  "keywords": ["storybook", "typescript"],
   "main": "build/index.js",
   "typings": "build/index.d.ts",
+  "files": ["build/**/*"],
   "scripts": {
-    "clean": "npm run test -- --clearCache && rimraf ./build ./coverage ./.jest-test-results.json",
+    "clean": "npm test -- --clearCache && rimraf ./build ./coverage ./.jest-test-results.json",
     "build": "npm run clean && ./node_modules/.bin/ttsc --project tsconfig.build.json",
     "postbuild": "npm run copystatic",
     "lint": "./node_modules/.bin/eslint --ext .js,.jsx,.ts,.tsx ./src",
@@ -15,17 +17,21 @@
     "storybook": "npm run build:storybook",
     "deploy:storybook": "npm run test:report && build-storybook -s ./src/static -o docs",
     "test": "jest",
-    "test:watch": "npm run test -- --watch",
-    "test:coverage": "npm run test -- --coverage",
-    "test:report": "npm run test -- --json --outputFile=./.jest-test-results.json",
-    "copystatic": "copyfiles -u 1 \"src/static/**/*\" build"
+    "test:watch": "npm test -- --watch",
+    "test:coverage": "npm test -- --coverage",
+    "test:report": "npm test -- --json --outputFile=./.jest-test-results.json",
+    "copystatic": "copyfiles -u 1 \"src/static/**/*\" build",
+    "prepare" : "npm run build",
+    "prepublishOnly" : "npm test && npm run lint",
+    "preversion" : "npm run lint",
+    "version" : "git add -A src",
+    "postversion" : "git push && git push --tags"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/BenjaminRhys-Davies/ts-design-system.git"
   },
   "private": false,
-  "keywords": [],
   "author": "Benjamin Rhys-Davies <brhysdavies@gmail.com>",
   "license": "ISC",
   "devDependencies": {
