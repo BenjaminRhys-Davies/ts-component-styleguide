@@ -1,11 +1,16 @@
 {
   "name": "ts-design-system",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A prototype storybook component library",
-  "keywords": ["storybook", "typescript"],
+  "keywords": [
+    "storybook",
+    "typescript"
+  ],
   "main": "build/index.js",
   "typings": "build/index.d.ts",
-  "files": ["build/**/*"],
+  "files": [
+    "build/**/*"
+  ],
   "scripts": {
     "clean": "npm test -- --clearCache && rimraf ./build ./coverage ./.jest-test-results.json",
     "build": "npm run clean && ./node_modules/.bin/ttsc --project tsconfig.build.json",
@@ -21,11 +26,11 @@
     "test:coverage": "npm test -- --coverage",
     "test:report": "npm test -- --json --outputFile=./.jest-test-results.json",
     "copystatic": "copyfiles -u 1 \"src/static/**/*\" build",
-    "prepare" : "npm run build",
-    "prepublishOnly" : "npm test && npm run lint",
-    "preversion" : "npm run lint",
-    "version" : "git add -A src",
-    "postversion" : "git push && git push --tags"
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "git add -A src",
+    "postversion": "git push && git push --tags"
   },
   "repository": {
     "type": "git",
