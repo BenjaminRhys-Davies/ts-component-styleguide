@@ -1,9 +1,12 @@
-import { color, space, typography } from './style/settings';
+import { color, layer, space, typography } from './style/settings';
 
-export { Button } from './components/Button';
-
+// Settings
 export const settings = {
   color,
+  layer,
   space,
   typography,
 };
+
+// Components
+export { Button } from './components/Button';
