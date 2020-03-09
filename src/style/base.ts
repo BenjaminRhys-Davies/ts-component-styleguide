@@ -8,7 +8,7 @@ export const base = `
   html {
     font-size: 100%;
     text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
+    font-smoothing: antialiased;
   }
 
   body {
@@ -21,11 +21,10 @@ const style = {
   normal: 'normal',
 };
 
-export const defaultFonts = (): string[] =>
+export const defaultFonts = (path = 'fonts/'): string[] =>
   font(
     [
       {
-        name: 'GT Walsheim Pro',
         faces: [
           {
             fileName: 'GT-Walsheim-Pro-Regular',
@@ -49,9 +48,10 @@ export const defaultFonts = (): string[] =>
           },
         ].map(face => ({
           ...face,
-          path: 'fonts/',
+          path,
           sources: ['eot', 'woff2', 'woff', 'ttf'],
         })),
+        name: 'GT Walsheim Pro',
       },
     ],
     ['sans-serif'],

@@ -1,3 +1,5 @@
+import { Face } from './generators/font';
+
 // Mocks
 const fontMock = jest.fn();
 jest.mock('./generators/font', () => ({ font: fontMock }));
@@ -15,6 +17,9 @@ jest.mock('./settings/typography', () => ({ weight: weightResult }));
 import { base, defaultFonts } from './base';
 
 describe('base', () => {
+  beforeEach(() => {
+    fontMock.mockClear();
+  });
   describe('base', () => {
     it('exports a string', () => {
       expect(base).toEqual(expect.any(String));
@@ -25,46 +30,62 @@ describe('base', () => {
   });
 
   describe('defaultFonts', () => {
-    it('calls font generator', () => {
-      defaultFonts();
-      expect(fontMock).toHaveBeenCalledWith(
-        [
-          {
-            name: 'GT Walsheim Pro',
-            faces: [
-              {
-                fileName: 'GT-Walsheim-Pro-Regular',
-                path: 'fonts/',
-                sources: ['eot', 'woff2', 'woff', 'ttf'],
-                style: 'normal',
-                weight: weightResult.default,
-              },
-              {
-                fileName: 'GT-Walsheim-Pro-Medium',
-                path: 'fonts/',
-                sources: ['eot', 'woff2', 'woff', 'ttf'],
-                style: 'normal',
-                weight: weightResult.medium,
-              },
-              {
-                fileName: 'GT-Walsheim-Pro-Regular-Oblique',
-                path: 'fonts/',
-                sources: ['eot', 'woff2', 'woff', 'ttf'],
-                style: 'italic',
-                weight: weightResult.default,
-              },
-              {
-                fileName: 'GT-Walsheim-Pro-Medium-Oblique',
-                path: 'fonts/',
-                sources: ['eot', 'woff2', 'woff', 'ttf'],
-                style: 'italic',
-                weight: weightResult.medium,
-              },
-            ],
-          },
-        ],
-        ['sans-serif'],
-      );
+    const faceGenerator = (path: string): Face[] => [
+      {
+        path,
+        fileName: 'GT-Walsheim-Pro-Regular',
+        sources: ['eot', 'woff2', 'woff', 'ttf'],
+        style: 'normal',
+        weight: weightResult.default,
+      },
+      {
+        path,
+        fileName: 'GT-Walsheim-Pro-Medium',
+        sources: ['eot', 'woff2', 'woff', 'ttf'],
+        style: 'normal',
+        weight: weightResult.medium,
+      },
+      {
+        path,
+        fileName: 'GT-Walsheim-Pro-Regular-Oblique',
+        sources: ['eot', 'woff2', 'woff', 'ttf'],
+        style: 'italic',
+        weight: weightResult.default,
+      },
+      {
+        path,
+        fileName: 'GT-Walsheim-Pro-Medium-Oblique',
+        sources: ['eot', 'woff2', 'woff', 'ttf'],
+        style: 'italic',
+        weight: weightResult.medium,
+      },
+    ];
+    describe('calls font generator', () => {
+      it('with detault path', () => {
+        defaultFonts();
+        expect(fontMock).toHaveBeenCalledWith(
+          [
+            {
+              faces: faceGenerator('fonts/'),
+              name: 'GT Walsheim Pro',
+            },
+          ],
+          ['sans-serif'],
+        );
+      });
+      it('with custom path', () => {
+        const path = 'EXPECTED PATH';
+        defaultFonts(path);
+        expect(fontMock).toHaveBeenCalledWith(
+          [
+            {
+              faces: faceGenerator(path),
+              name: 'GT Walsheim Pro',
+            },
+          ],
+          ['sans-serif'],
+        );
+      });
     });
   });
 });
