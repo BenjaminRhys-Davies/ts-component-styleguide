@@ -8,7 +8,6 @@ export const base = `
   html {
     font-size: 100%;
     text-rendering: optimizeLegibility;
-    font-smoothing: antialiased;
   }
 
   body {
